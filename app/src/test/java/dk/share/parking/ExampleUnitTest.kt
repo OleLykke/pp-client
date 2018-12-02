@@ -1,4 +1,4 @@
-package dk.parking.aprivate.privateparking
+package dk.share.parking
 
 import org.junit.Test
 

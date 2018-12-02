@@ -1,4 +1,4 @@
-package dk.parking.aprivate.privateparking
+package dk.share.parking
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

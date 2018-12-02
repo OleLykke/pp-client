@@ -1,4 +1,4 @@
-package dk.parking.aprivate.privateparking
+package dk.share.parking
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -25,6 +25,9 @@ import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
 
 import kotlinx.android.synthetic.main.activity_login.*
+import android.content.Intent
+import dk.share.parking.R
+
 
 /**
  * A login screen that offers login via email/password.
@@ -48,7 +51,27 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             false
         })
 
-        email_sign_in_button.setOnClickListener { attemptLogin() }
+        //Login
+        email_sign_in_button.setOnClickListener {
+            attemptLogin()
+
+            if (mAuthTask != null) {
+                val i = Intent(applicationContext, MapsActivity::class.java)
+                startActivity(i)
+            }
+        }
+
+        //Naviate to register new user activity
+        email_register_button.setOnClickListener {
+            val i = Intent(applicationContext, NewUserActivity::class.java)
+            startActivity(i)
+        }
+
+        //Naviate to register new user activity
+        email_forgot_password_link.setOnClickListener {
+            val i = Intent(applicationContext, NewUserActivity::class.java)
+            startActivity(i)
+        }
     }
 
     private fun populateAutoComplete() {
@@ -145,12 +168,14 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     private fun isEmailValid(email: String): Boolean {
         //TODO: Replace this with your own logic
-        return email.contains("@")
+        //return email.contains("@")
+        return true
     }
 
     private fun isPasswordValid(password: String): Boolean {
         //TODO: Replace this with your own logic
-        return password.length > 4
+        //return password.length > 4
+        return true
     }
 
     /**
